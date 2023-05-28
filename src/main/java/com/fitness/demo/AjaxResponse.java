@@ -21,7 +21,11 @@ public class AjaxResponse {
         this.data = data;
     }
 
-    public static AjaxResponse createAjaxForGetRequest(Object data) {
+    public static AjaxResponse AjaxSuccessResponseWithData(Object data) {
         return new AjaxResponse(true, 200, "GET REQUEST OK", data);
+    }
+
+    public static AjaxResponse AjaxSuccessResponseNoData() {
+        return new AjaxResponse(true, 200, "GET REQUEST OK", null);
     }
 }
