@@ -1,4 +1,4 @@
-package com.fitness.demo.controller;
+package com.fitness.demo;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
