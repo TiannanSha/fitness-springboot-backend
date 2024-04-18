@@ -31,4 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# hide sensitive data in application.properties
 src/main/resources/application.properties
+
+.DS_store
