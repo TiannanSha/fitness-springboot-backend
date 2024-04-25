@@ -1,5 +1,6 @@
 package com.fitness.demo.listing;
 
+import com.fitness.demo.forms.ListingFormConverter;
 import com.fitness.demo.user.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
