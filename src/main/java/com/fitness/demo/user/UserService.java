@@ -21,8 +21,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User authenticate(String userName, String password) {
-        User user = userRepository.findByUserName(userName);
+    public User authenticate(String username, String password) {
+        User user = userRepository.findByUsername(username);
         if (user == null) return null;
         if (user.getPassword().equals(password)) {
             return user;

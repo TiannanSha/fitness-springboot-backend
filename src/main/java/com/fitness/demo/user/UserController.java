@@ -13,17 +13,27 @@ import java.util.Map;
 @Slf4j
 @RestController
 @RequestMapping(value = "/api/v1/user")
+@CrossOrigin
 public class UserController {
 
     @Autowired
     UserService userService;
 
     @PostMapping
-    public ResponseEntity<String> createUser(@RequestParam Map<String, String> params) { // binds the JSON in the request body to a muscle object
-        log.info("create user: " + params);
-        User user = new User(params.get("userName"), params.get("password"), params.get("bio"));
-        userService.createUser(user);
-        return new ResponseEntity<>("created user" + user, HttpStatus.OK);
+    public ResponseEntity<String> createUser(@RequestBody Map<String, String> body) { // binds the JSON in the request body to a muscle object
+//        log.info("create user: " + params);
+//        String username = params.get("username");
+//        String password = params.get("password");
+//        User user = new User(username, password, params.get("bio"));
+        String username = body.get("username");
+        String password = body.get("password");
+        User user = new User(username, password, "bio");
+        if (username!=null && password!=null) {
+            userService.createUser(user);
+            return new ResponseEntity<>("created user " + user, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("registration failed, either username or password is null", HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping
@@ -33,10 +43,10 @@ public class UserController {
     }
 
     @PostMapping(value = "login")
-    public ResponseEntity<User> authenticateAndGetUserByUserName(@RequestParam Map<String, String> params) {
-        String userName = params.get("userName");
+    public ResponseEntity<User> authenticateAndGetUserByUserName(@RequestBody Map<String, String> params) {
+        String username = params.get("username");
         String password = params.get("password");
-        User user = userService.authenticate(userName, password);
+        User user = userService.authenticate(username, password);
         if (user != null) {
             return new ResponseEntity<>(user, HttpStatus.OK);
         } else {

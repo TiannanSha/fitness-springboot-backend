@@ -9,11 +9,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, ObjectId> {
+public interface UserRepository extends CrudRepository<User, String> {
 
         User save(User user);
-
-        Optional<User> findById(ObjectId objectId);
 
         List<User> findAll();
 
@@ -21,9 +19,7 @@ public interface UserRepository extends CrudRepository<User, ObjectId> {
 
         void delete(User entity);
 
-        boolean existsById(ObjectId objectId);
-
-        User findByUserName(String userName);
+        User findByUsername(String userName);
 
 
 }
