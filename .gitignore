@@ -32,7 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 
-# hide sensitive data in application.properties
-src/main/resources/application.properties
+# hide sensitive data in application.yml
+src/main/resources/application.yml
 
 .DS_store
