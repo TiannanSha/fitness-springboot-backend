@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class ListingFormConverterTest {
-    ListingForm listingForm = new ListingForm("skis", 439);
-    ListingFormConverter converter = new ListingFormConverter();
+class ListingDTOConverterTest {
+    ListingDTO listingDTO = new ListingDTO("skis", 439.0, "sha");
 
     @Test
     public void testConvertingListingForm() {
-        Listing listing = converter.convertForm(listingForm);
+        Listing listing = ListingDTO.convertToListing(listingDTO);
         assertEquals(439, listing.getPrice());
         assertEquals("skis", listing.getDescription());
+        assertEquals("sha", listing.getSeller());
     }
 }

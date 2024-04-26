@@ -30,7 +30,7 @@ public class UserController {
         User user = new User(username, password, "bio");
         if (username!=null && password!=null) {
             userService.createUser(user);
-            return new ResponseEntity<>("created user " + user, HttpStatus.OK);
+            return new ResponseEntity<>("created user " + user, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>("registration failed, either username or password is null", HttpStatus.BAD_REQUEST);
         }

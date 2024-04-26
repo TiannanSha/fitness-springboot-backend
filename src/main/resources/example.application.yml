@@ -1,0 +1,12 @@
+server:
+  port: <>
+
+spring:
+  data:
+    mongodb:
+      database: <db name>
+        uri: <db uri>
+
+  # so that springboot doesn't require jdbc configured
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
