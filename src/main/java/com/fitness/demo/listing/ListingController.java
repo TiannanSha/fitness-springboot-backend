@@ -1,5 +1,6 @@
 package com.fitness.demo.listing;
 
+import com.fitness.demo.exception.BadRequestException;
 import com.fitness.demo.forms.ListingDTO;
 
 import jakarta.validation.Valid;
@@ -33,7 +34,7 @@ public class ListingController {
     public ResponseEntity<Listing> postListing(@Valid @RequestBody ListingDTO listingDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             System.out.println(bindingResult.getAllErrors());
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            throw new BadRequestException(bindingResult);
         } else {
             System.out.println("ok");
         }
